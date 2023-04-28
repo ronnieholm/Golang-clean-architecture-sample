@@ -9,7 +9,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func BuildCreateStoryCommandBuilder() application.CreateStoryCommand {
+func BuildCreateStoryCommand() application.CreateStoryCommand {
 	return application.CreateStoryCommand{
 		Id:          uuid.New(),
 		Title:       "Title",
@@ -28,7 +28,7 @@ func BuildAddTaskToStoryCommand(storyId uuid.UUID) application.AddTaskToStoryCom
 
 func TestCreateStoryCommand(t *testing.T) {
 	env := infrastructure.New()
-	cmd := BuildCreateStoryCommandBuilder()
+	cmd := BuildCreateStoryCommand()
 	storyId, err := cmd.Run(env)
 	assert.Nil(t, err)
 
@@ -43,7 +43,7 @@ func TestCreateStoryCommand(t *testing.T) {
 
 func TestAddTaskToStoryCommand(t *testing.T) {
 	env := infrastructure.New()
-	storyCmd := BuildCreateStoryCommandBuilder()
+	storyCmd := BuildCreateStoryCommand()
 	storyId, err := storyCmd.Run(env)
 	assert.Nil(t, err)
 

@@ -1,7 +1,5 @@
 package infrastructure
 
-// TODO: pass context to db operations
-
 import (
 	"database/sql"
 	"fmt"
