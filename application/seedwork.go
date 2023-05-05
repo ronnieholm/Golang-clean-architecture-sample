@@ -3,8 +3,8 @@ package application
 import (
 	"time"
 
-	"example.com/m/domain/storyAggregate"
 	"github.com/google/uuid"
+	"github.com/ronnieholm/Golang-clean-architecture-sample/domain/storyAggregate"
 )
 
 type DuplicateError struct {

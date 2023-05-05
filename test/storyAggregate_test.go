@@ -3,9 +3,9 @@ package infrastrucre
 import (
 	"testing"
 
-	"example.com/m/application"
-	"example.com/m/infrastructure"
 	"github.com/google/uuid"
+	"github.com/ronnieholm/Golang-clean-architecture-sample/application"
+	"github.com/ronnieholm/Golang-clean-architecture-sample/infrastructure"
 	"github.com/stretchr/testify/assert"
 )
 

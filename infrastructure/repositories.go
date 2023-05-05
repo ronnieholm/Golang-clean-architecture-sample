@@ -4,8 +4,8 @@ import (
 	"database/sql"
 	"fmt"
 
-	"example.com/m/domain/storyAggregate"
 	"github.com/google/uuid"
+	"github.com/ronnieholm/Golang-clean-architecture-sample/domain/storyAggregate"
 )
 
 type StoryRepository struct {
@@ -41,13 +41,14 @@ func (r StoryRepository) GetById(id storyAggregate.StoryId) (*storyAggregate.Sto
 		panic(err)
 	}
 
+	// https://www.calhoun.io/querying-for-multiple-records-with-gos-sql-package/
+	// TODO: Create join query and parse: https://stackoverflow.com/questions/54601529/efficiently-mapping-one-to-many-many-to-many-database-to-struct-in-golang (handle zero tasks, left join?)
+
 	var id2 string
 	var title string
 	var description sql.NullString
 	var createdAt string
 	var updatedAt sql.NullString
-
-	// TODO: run two queries in parallel signaling failure
 
 	err = stmt.QueryRow(id.Value.String()).Scan(&id2, &title, &description, &createdAt, &updatedAt)
 	if err != nil {
@@ -67,6 +68,7 @@ func (r StoryRepository) ApplyEvent(s storyAggregate.Story) error {
 	for len(s.Events) > 0 {
 		switch v := s.Events[0].(type) {
 		case storyAggregate.StoryCreatedEvent:
+			// TODO: use defer to close statements?
 			stmt, err := r.tx.Prepare("insert into stories (id, title, description, created_at) values (?, ?, ?, ?)")
 			if err != nil {
 				panic(err)

@@ -5,8 +5,8 @@ import (
 	"strings"
 	"time"
 
-	"example.com/m/domain"
 	"github.com/google/uuid"
+	"github.com/ronnieholm/Golang-clean-architecture-sample/domain"
 )
 
 // Value objects

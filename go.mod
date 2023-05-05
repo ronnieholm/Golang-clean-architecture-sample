@@ -1,4 +1,4 @@
-module example.com/m
+module github.com/ronnieholm/Golang-clean-architecture-sample
 
 go 1.20
 

@@ -6,8 +6,8 @@ import (
 
 	_ "github.com/mattn/go-sqlite3"
 
-	"example.com/m/application"
-	"example.com/m/domain/storyAggregate"
+	"github.com/ronnieholm/Golang-clean-architecture-sample/application"
+	"github.com/ronnieholm/Golang-clean-architecture-sample/domain/storyAggregate"
 )
 
 type SystemClock struct {

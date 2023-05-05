@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"time"
 
-	"example.com/m/domain/storyAggregate"
 	"github.com/google/uuid"
+	"github.com/ronnieholm/Golang-clean-architecture-sample/domain/storyAggregate"
 )
 
 type CreateStoryCommand struct {
@@ -34,6 +34,7 @@ func (c CreateStoryCommand) Run(env AppEnv) (*uuid.UUID, error) {
 
 	validationErrors := errors.Join(titleErr, descriptionErr)
 	if validationErrors != nil {
+		// TODO: replace %v with %w for wrapping errors
 		return nil, fmt.Errorf("validation errors: %v", validationErrors)
 	}
 
