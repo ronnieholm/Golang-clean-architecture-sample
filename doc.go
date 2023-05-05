@@ -1,2 +1,2 @@
-// Description of project
+// TODO: Description of project
 package main
